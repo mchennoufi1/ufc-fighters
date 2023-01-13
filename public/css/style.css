@@ -6,6 +6,11 @@ body {
     background-color: white;
 }
 
+.img-background {
+    background-image: url("../img/UFC.jpg");
+    height: 200px;
+    background-size: cover;
+}
 .pull-right img-thumbnail {
     margin-top: -10px;
     margin-bottom: 10px
