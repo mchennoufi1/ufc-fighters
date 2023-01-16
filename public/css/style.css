@@ -8,7 +8,7 @@ body {
 
 .img-background {
     background-image: url("../img/UFC.jpg");
-    height: 200px;
+    height: 400px;
     background-size: cover;
 }
 .pull-right img-thumbnail {
@@ -30,4 +30,7 @@ body {
 
 .product-img {
     width: 70%;
+}
+h1 {
+    font-family: sans-serif;
 }
