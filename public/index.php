@@ -4,7 +4,8 @@ require '../Modules/login.php';
 require '../Modules/logout.php';
 require '../Modules/database.php';
 require '../Modules/common.php';
-
+require '../Modules/review.php';
+require '../Modules/fighters.php';
 session_start();
 //var_dump($_SESSION);
 //var_dump($_POST);
@@ -29,10 +30,13 @@ switch ($params[1]) {
         break;
 
     case 'category':
-        include_once "../Templates/home.php";
+        $fighters = getFighters();
+        include_once "../Templates/category.php";
+
         break;
 
     case 'product':
+        include_once "../Templates/fighter.php";
         break;
 
     case 'login':
