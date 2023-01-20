@@ -41,6 +41,15 @@ switch ($params[1]) {
 
     case 'login':
         $titleSuffix = ' | Home';
+        if(isset($_POST['login']))
+            $result = checkLogin();
+        switch ($result){
+            case 'ADMIN':
+                header("Location: /admin/home");
+                break;
+            case 'MEMBER':
+                header("Locatioj");
+        }
         include_once "../Templates/home.php";
         break;
 
