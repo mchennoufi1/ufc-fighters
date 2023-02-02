@@ -40,27 +40,9 @@ switch ($params[1]) {
         break;
 
     case 'login':
-        $titleSuffix = ' | Home';
-        if(isset($_POST['login']))
-            $result= checkLogin();
-        switch ($result){
-            case 'ADMIN':
-                header("Location: /admin/home");
-                break;
-            case 'MEMBER':
-                header("Location: /member/home");
-                break;
-            case 'FAILURE':
-                $message = "Email and password do not match";
-                include_once "../Templates/login.php";
-                break;
-            case 'INCOMPLETE':
-                $message = "Please enter your email and password";
-                include_once "../Templates/login.php";
-                break;
-        }
-
-        include_once "../Templates/home.php";
+        $titleSuffix = ' | login';
+        //var_dump($categories);die;
+        include_once "../Templates/login.php";
         break;
 
     case 'logout':
@@ -70,13 +52,12 @@ switch ($params[1]) {
 
     case 'register':
         $titleSuffix = ' | Register';
-        if(isset($_POST['register']))
-        include_once "../Templates/home.php";
+        include_once "../Templates/register.php";
         break;
 
     case 'contact':
-        $titleSuffix = ' | Home';
-        include_once "../Templates/home.php";
+        $titleSuffix = ' | Contact';
+        include_once "../Templates/contact.php";
         break;
 
     case 'admin':

@@ -1,40 +1,55 @@
 <!DOCTYPE html>
-<html>
-<?php
-include_once('defaults/head.php');
-?>
-<body>
 <div class="container">
     <?php
-    include_once ('defaults/header.php');
-    include_once ('defaults/menu.php');
-    include_once ('defaults/pictures.php');
+    $page = "inloggen";
+
+    include_once('../Templates/defaults/header.php');
+    include_once('../Templates/defaults/head.php');
+    include_once ('../Templates/defaults/menu.php');
     ?>
-    <?php if(!empty($message)): ?>
-        <div class="alert alert-success" role="alert">
-            <?=$message?>
-        </div>
-    <?php endif;?>
-    <h4>UFC Fighters</h4>
-    <form method="post"
-          <div class="mb-3">
-              <label for="exampleInputEmaill" class="form-label"Emailadress></label>
-              <input type="email" class="form-control" name="email"
-              id="exampleInputEmaill" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <br>
+    <form method="post" action="">
+        <label>Username</label>
+        <input type="text" name="username"><br>
 
-          </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class=" form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <button type="submit" name="login" class="btn btn-primary">submit</button>
+        <label>Password</label>
+        <input type="password" name="password"><br>
+        <br>
+        <input type="submit" name="inloggen" value="Inloggen">
     </form>
-
-    <hr>>
+    <br>
     <?php
-    include_once ('defaults/footer.php');
+    try{
+        $db = new PDO("mysql:host=localhost;dbname=healthone"
+            ,"root");
+        if(isset($_POST['inloggen'])) {
+            session_start();
+            $username = $_POST['username'];
+            $password = sha1($_POST['password']);
+            $query = $db->prepare("SELECT * FROM login WHERE 
+                    username = :user AND password = :pass");
+            $query->bindParam("username", $username);
+            $query->bindParam("password", $password);
+            $query->execute();
+            if($query->rowCount() == 1) {
+                echo "Juiste gegevens!";
+                $_SESSION['login'] = true;
+                if($_SESSION['login'] == true){
+                    header('Location: ../Templates/home.php');
+                }
+            } else {
+                echo "Onjuiste gegevens!";
+                $_SESSION['login'] = false;
+            }
+        }
+        echo "<br>";
+    } catch(PDOException $e) {
+        die("Error!: " . $e->getmessage());
+    }
+    ?>
+    <?php
+    include_once ('../Templates/defaults/footer.php');
     ?>
 </div>
 </body>
-</html>
+<html>
