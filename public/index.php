@@ -42,7 +42,7 @@ switch ($params[1]) {
     case 'login':
         $titleSuffix = ' | Home';
         if(isset($_POST['login']))
-            $result= heckLogin();
+            $result= checkLogin();
         switch ($result){
             case 'ADMIN':
                 header("Location: /admin/home");
