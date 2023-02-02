@@ -4,7 +4,8 @@ require '../Modules/login.php';
 require '../Modules/logout.php';
 require '../Modules/database.php';
 require '../Modules/common.php';
-
+require '../Modules/review.php';
+require '../Modules/fighters.php';
 session_start();
 //var_dump($_SESSION);
 //var_dump($_POST);
@@ -29,15 +30,19 @@ switch ($params[1]) {
         break;
 
     case 'category':
-        include_once "../Templates/home.php";
+        $fighters = getFighters();
+        include_once "../Templates/category.php";
+
         break;
 
     case 'product':
+        include_once "../Templates/fighter.php";
         break;
 
     case 'login':
-        $titleSuffix = ' | Home';
-        include_once "../Templates/home.php";
+        $titleSuffix = ' | login';
+        //var_dump($categories);die;
+        include_once "../Templates/login.php";
         break;
 
     case 'logout':
@@ -46,13 +51,13 @@ switch ($params[1]) {
         break;
 
     case 'register':
-        $titleSuffix = ' | Home';
-        include_once "../Templates/home.php";
+        $titleSuffix = ' | Register';
+        include_once "../Templates/register.php";
         break;
 
     case 'contact':
-        $titleSuffix = ' | Home';
-        include_once "../Templates/home.php";
+        $titleSuffix = ' | Contact';
+        include_once "../Templates/contact.php";
         break;
 
     case 'admin':

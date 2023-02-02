@@ -6,6 +6,11 @@ body {
     background-color: white;
 }
 
+.img-background {
+    background-image: url("../img/UFC.jpg");
+    height: 400px;
+    background-size: cover;
+}
 .pull-right img-thumbnail {
     margin-top: -10px;
     margin-bottom: 10px
@@ -25,4 +30,7 @@ body {
 
 .product-img {
     width: 70%;
+}
+h1 {
+    font-family: sans-serif;
 }

@@ -1,13 +1,13 @@
 <?php
 
 
-class Product
+class Fighter
 {
     public $id;
     public $name;
-    public $picture;
-    public $description;
+    public $weight;
     public $category_id;
+    public $img;
 
     public function __construct()
     {

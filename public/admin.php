@@ -21,6 +21,10 @@ if (!isAdmin()) {
             break;
 
         case 'delete':
+            $id = $params[3];
+            $deleteMessage = deleteProduct($id);
+            include_once "../Templates/products.php";
+
             break;
 
         default:
